@@ -42,4 +42,19 @@ function loginWithWebex() {
   const authUrl = `https://webexapis.com/v1/authorize?client_id=${client_id}&response_type=token&redirect_uri=${encodeURIComponent(redirect_uri)}&scope=${encodeURIComponent(scopes)}&state=12345`;
 
   window.location.href = authUrl;
+  window.onload = function () {
+  const token = new URLSearchParams(window.location.hash.slice(1)).get("access_token");
+  if (token) {
+    initializeWebex(token);
+    document.getElementById("log").innerHTML += "<p>✅ Logged into Webex</p>";
+  } else {
+    document.getElementById("log").innerHTML += "<p>🔒 Not logged in. Please use the button above.</p>";
+  }
+
+  // Optional: Click-to-dial integration with Salesforce
+  sforce.interaction.cti.enableClickToDial(true);
+  sforce.interaction.onClickToDial(function(payload) {
+    document.getElementById("phoneNumber").value = payload.number;
+    makeCall();
+  });
 };
