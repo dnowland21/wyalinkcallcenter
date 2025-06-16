@@ -4,13 +4,31 @@
   <title>Webex Softphone</title>
   <script src="https://unpkg.com/webex/umd/webex.min.js"></script>
   <script src="https://login.salesforce.com/support/api/52.0/interaction.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 1rem; }
+    input { margin-right: 0.5rem; padding: 0.5rem; }
+    button { padding: 0.5rem 1rem; margin: 0.25rem 0; }
+    #log p { margin: 0.25rem 0; }
+  </style>
 </head>
 <body>
-  <h3>Webex Softphone</h3>
-  <input id="phoneNumber" placeholder="Enter number" />
-  <button onclick="makeCall()">Call</button>
-  <button onclick="loginWithWebex()">Log In with Webex</button>
-  <div id="log"></div>
+  <h2>WyaLink Webex Softphone</h2>
+
+  <div>
+    <button onclick="loginWithWebex()">🔐 Log In with Webex</button>
+  </div>
+
+  <br>
+
+  <div>
+    <input id="phoneNumber" placeholder="Enter number" />
+    <button onclick="makeCall()">📞 Call</button>
+  </div>
+
+  <br>
+
+  <div id="log"><p>Loading...</p></div>
+
   <script src="softphone.js"></script>
 </body>
 </html>
