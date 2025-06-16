@@ -34,4 +34,12 @@ window.onload = function () {
   } else {
     log("Please log in with Webex");
   }
+}
+function loginWithWebex() {
+  const client_id = "C88a07f0c268961876422974c5ff4bbe62dc2a21d66c331f606361ffa912f807a";
+  const redirect_uri = window.location.origin + window.location.pathname;
+  const scopes = "spark:all spark:kms spark:telephony";
+  const authUrl = `https://webexapis.com/v1/authorize?client_id=${client_id}&response_type=token&redirect_uri=${encodeURIComponent(redirect_uri)}&scope=${encodeURIComponent(scopes)}&state=12345`;
+
+  window.location.href = authUrl;
 };
